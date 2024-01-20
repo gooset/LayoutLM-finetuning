@@ -1,16 +1,9 @@
-# LayoutLMv3 Notebooks and Training Tips
+# Invoice OCR & LayoutLM Classifier
 
-Explore **LayoutLMv3** through our notebooks for fine-tuning and inference, achieving exceptional performance on the FUNSD dataset, surpassing 90% F1. Key to this success is the use of segment position embeddings, offering improved performance over word-level embeddings.
+This repository contains code for Optical Character Recognition (OCR) on invoices using Tesseract OCR and visualizing bounding boxes. Additionally, it preprocesses data with Hugging Face's datasets and fine-tunes a LayoutLM model for sequence classification.
 
-OCR engines, including Tesseract, identify segments, enhancing LayoutLMv3's capabilities. For FUNSD, segment creation is based on labels ([details](https://huggingface.co/datasets/nielsr/funsd-layoutlmv3/blob/main/funsd-layoutlmv3.py#L140)). Always opt for segment position embeddings for superior performance.
+## Usage
 
-## Training Tips
-
-LayoutLMv3 training parallels LayoutLMv2, with a few distinctions:
-
-- **Image Preprocessing**: Resize and normalize images to `pixel_values` of shape `(batch_size, num_channels, height, width)`, with RGB format. This differs from LayoutLMv2, which used BGR format.
-
-- **Text Tokenization**: LayoutLMv3 relies on RoBERTa-based byte-level Byte-Pair-Encoding. Unlike LayoutLMv2, which used BERT-like WordPiece tokenization.
-
-Introducing the `LayoutLMv3Processor` that seamlessly combines image and text processing. It mirrors the usage of its predecessor, [`LayoutLMv2Processor`](https://huggingface.co/docs/transformers/model_doc/layoutlmv2#usage-layoutlmv2processor).
-
+- **Installation**: Clone this repository and install dependencies with `pip install -r requirements.txt`.
+- **OCR**: Use `invoice_ocr.ipynb` to perform OCR on invoice images.
+- **Sequence Classification**: Utilize `layoutlm_sequence_classification.ipynb` to preprocess data and train the LayoutLM model.
